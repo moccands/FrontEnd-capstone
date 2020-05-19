@@ -15,24 +15,33 @@
 
         <header>
             <div class="">
-                Logo
+                <img src="./img/logoudacity.jpg" alt="logo">
             </div>
             <div class="">
-                navigation
+                travel app
             </div>
         </header>
 
         <main>
             <section>
                 <form class="" onsubmit="return handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
+                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="enter a location name, ex: Paris">
+                    <input id="name" type="date" name="input" value="" onblur="onBlur()" placeholder="Date">
                     <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
                 </form>
             <section>
 
             <section>
-                <strong>Form Results:</strong>
+                <div class="card">
+                <strong>Weather on the day of your arrival:</strong>
                 <div id="results"></div>
+            </section>
+            <section>
+                <div class="card">
+                    <h2><i>Name of the city</i></h2>
+                    <figure>
+                        <img src="/img/SaraMoccandforUdacity.jpg">
+                    </figure>
             </section>
         </main>
 
