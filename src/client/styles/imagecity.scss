@@ -3,3 +3,22 @@
     transition: 0.3s;
     border-radius: 5px; /* 5px rounded corners */
   }
+  #content {
+    grid-area: bottomRight;
+    background-image: url('../img/logoudacity.jpg');
+    background-size: contain;
+    background-position-y: center;
+    background-repeat: no-repeat;
+  }
+  
+  #header {
+		grid-area: top;
+	}
+
+  div.picture1 {
+    width:1200px; /*width of your image*/
+    height:100px; /*height of your image*/
+    background-image:url('../img/logoudacity.jpg');
+    margin:0; /* If you want no margin */
+    padding:0; /*if your want to padding */
+ }
