@@ -1,6 +1,10 @@
-const baseURL = 'http://api.openweathermap.org/data/2.5/forecast?zip='
-const apiKey = '&appid=7410715a75a449f7c6e0c4f207575f6e&units=imperial';
+//const baseURL = 'http://api.openweathermap.org/data/2.5/forecast?zip='
+const baseURL = 'http://api.geonames.org/postalCodeSearchJSON?placename='
+const apiKey = '&username=moccands';
 const newZip = 10010;
+
+
+
 function handleSubmit(event) {
     event.preventDefault()
 
@@ -9,13 +13,13 @@ function handleSubmit(event) {
     Client.checkForName(formText)
 
     console.log("::: Form Submitted :::")
-    /*getZip(baseURL,newZip, apiKey)
-    .then(function(data) {
-        document.getElementById('results').innerHTML = data.list[0].main.temp;
-        console.log(data.list[0].main.temp);
-    });*/
-    postData('http://localhost:8081/analyseText', {data : formText }).then(function(res) {
+
+
+
+      getZip(baseURL,formText, apiKey).then(function(data){
+        postData('http://localhost:8081/analyseText', {data : formText }).then(function(res) {
           document.getElementById('results').innerHTML = res.polarity
+       });
       })
 }
 
@@ -24,7 +28,7 @@ const getZip = async (baseURL, zip, key)=>{
   const res = await fetch(baseURL+zip+key)
   try {
     const data = await res.json();
-    console.log("res", data);
+    console.log("res", data.postalCodes[0]);
 
     return data;
   }  catch(error) {
