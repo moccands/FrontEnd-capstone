@@ -5,6 +5,32 @@ const newZip = 10010;
 
 
 
+function getCountDown() {
+
+  let valDate = document.getElementById('date').value;
+
+  let dateWheather = new Date();
+
+  if (valDate) {
+    dateWheather = new Date(valDate);
+  } else {
+    dateWheather = new Date();
+  }
+
+  //console.log(valDate);
+
+  let datenow = new Date();
+
+  const diffTime = (dateWheather - datenow);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+  //console.log(datenow);
+  //console.log(dateWheather)
+  
+
+  return diffDays;
+
+}
+
 function handleSubmit(event) {
     event.preventDefault()
 
@@ -14,18 +40,20 @@ function handleSubmit(event) {
 
     console.log("::: Form Submitted :::")
 
+    let countDown = getCountDown()
+    console.log(countDown)
 
 
-      getZip(baseURL,formText, apiKey).then(function(data){
+      getGeo(baseURL,formText, apiKey).then(function(data){
         postData('http://localhost:8081/analyseText', {data : formText }).then(function(res) {
           document.getElementById('results').innerHTML = res.polarity
        });
       })
 }
 
-const getZip = async (baseURL, zip, key)=>{
+const getGeo = async (baseURL, city, key)=>{
 
-  const res = await fetch(baseURL+zip+key)
+  const res = await fetch(baseURL+city+key)
   try {
     const data = await res.json();
     console.log("res", data.postalCodes[0]);
