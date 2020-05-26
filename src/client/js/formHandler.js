@@ -1,11 +1,13 @@
 //const baseURL = 'http://api.openweathermap.org/data/2.5/forecast?zip='
 const baseURL = 'http://api.geonames.org/postalCodeSearchJSON?placename='
-const apiKey = '&username=moccands';
+const apiUser = '&username=moccands';
+const whetheURL = 'https://api.weatherbit.io/v2.0/forecast/daily?city='
+const apiKey = '&key=f5f2b485731f46d4a6f668271c1b33e4';
 const newZip = 10010;
 
 
 
-function getCountDown() {
+function getCountDown()   {
 
   let valDate = document.getElementById('date').value;
 
@@ -44,12 +46,18 @@ function handleSubmit(event) {
     console.log(countDown)
 
 
-      getGeo(baseURL,formText, apiKey).then(function(data){
+    getGeo(baseURL,formText, apiUser).
+      then(function(data){
+        getWeath(data,countDown)
+      }).
+      then(function(data){
         postData('http://localhost:8081/analyseText', {data : formText }).then(function(res) {
           document.getElementById('results').innerHTML = res.polarity
        });
       })
 }
+
+
 
 const getGeo = async (baseURL, city, key)=>{
 
@@ -57,6 +65,23 @@ const getGeo = async (baseURL, city, key)=>{
   try {
     const data = await res.json();
     console.log("res", data.postalCodes[0]);
+
+    return data.postalCodes[0];
+  }  catch(error) {
+    console.log("error", error);
+    // appropriately handle the error
+  }
+}
+
+const getWeath = async (data, countDown)=>{
+
+  let lat = data.lat;
+  let lon = data.lng;
+  
+  const res = await fetch(whetheURL+'&lat='+lat+'&lon='+lon+apiKey);
+  try {
+    const data = await res.json();
+    console.log("res", data);
 
     return data;
   }  catch(error) {
