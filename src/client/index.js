@@ -1,6 +1,8 @@
 import { checkForName } from './js/nameChecker'
 import { getCountDown } from './js/nameChecker'
+import { getHistDate } from './js/nameChecker'
 import { handleSubmit } from './js/formHandler'
+
 import img from './img/logoudacity.jpg';
 
 import './styles/resets.scss'
@@ -14,7 +16,8 @@ import './styles/imagecity.scss'
 export {
     checkForName,
     handleSubmit,
-    getCountDown
+    getCountDown,
+    getHistDate
 }
 
 console.log(checkForName);

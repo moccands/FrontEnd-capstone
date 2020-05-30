@@ -3,7 +3,29 @@ const baseURL = 'http://api.geonames.org/postalCodeSearchJSON?placename='
 const apiUser = '&username=moccands';
 const whetheURLforecast = 'https://api.weatherbit.io/v2.0/forecast/daily?city=';
 const whetheURLcurrent ='https://api.weatherbit.io/v2.0/current?city=';
+const whetheURLhistory ='https://api.weatherbit.io/v2.0/history/daily?';
 const apiKey = '&key=f5f2b485731f46d4a6f668271c1b33e4'; // TODO put in env file
+
+function udpateUI(dataWeath) {
+    console.log("here")
+    console.log(dataWeath);
+    let descr = '';
+    if (dataWeath.weather) {
+      if (dataWeath.min_temp) {
+        descr = dataWeath.weather.description+', ' + ' T Min: '+ dataWeath.min_temp + '[°], T Max: '+ dataWeath.max_temp + '[°]';
+      }
+      else {
+        descr = dataWeath.weather.description+', ' + ' T Min: '+ dataWeath.temp + '[°]';
+      }
+    }
+    else {
+      descr = 'Precip: '+ dataWeath.precip +'[mm], T Min: '+ dataWeath.min_temp + '[°], T Max: '+ dataWeath.max_temp + '[°]';
+    }
+
+    // TODO check temp instead max min for current
+
+    document.getElementById('results').innerHTML =  descr
+}
 
 function handleSubmit(event) {
     event.preventDefault()
@@ -23,9 +45,7 @@ function handleSubmit(event) {
         getWeath(data,countDown).
           then(function(dataWeath){
             postData('http://localhost:8081/analyseText', {data : formText }).then(function(res) {
-              console.log("here")
-              console.log(dataWeath)
-              document.getElementById('results').innerHTML = dataWeath.weather.description
+              udpateUI(dataWeath)
              });
           });
       });
@@ -52,28 +72,35 @@ const getWeath = async (data, countDown)=>{
   let lat = data.lat;
   let lon = data.lng;
   let url ;
+  let arrayIndice = countDown;
 
 
 
   if (countDown == 0) {
     console.log("current");
-    url = whetheURLcurrent;
+    url = whetheURLcurrent+'&lat='+lat+'&lon='+lon+apiKey;
   }
-  else if (countDown < 17){
+  else if ((countDown > 0) && (countDown < 17)){
     console.log("forecast");
 
-    url = whetheURLforecast;
+    url = whetheURLforecast+'&lat='+lat+'&lon='+lon+apiKey;
   }
   else {
     console.log("historical");
+    let  datesToFrom = Client.getHistDate(countDown); 
+    console.log(datesToFrom);
+    url = whetheURLhistory+'&lat='+lat+'&lon='+lon+datesToFrom+apiKey;
+    arrayIndice = 0; 
   }
   
-  const res = await fetch(url+'&lat='+lat+'&lon='+lon+apiKey);
+  const res = await fetch(url);
   try {
     const data = await res.json();
-    console.log("array data", data.data[countDown]);
+    console.log("array data", data.data);
 
-    return data.data[countDown];
+    console.log("array[] data", data.data[arrayIndice]);
+
+    return data.data[arrayIndice];
   }  catch(error) {
     console.log("error", error);
     // appropriately handle the error

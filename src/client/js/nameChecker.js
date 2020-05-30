@@ -22,22 +22,40 @@ function getCountDown()   {
   
     if (valDate) {
       dateWheather = new Date(valDate);
-    } else {
-      dateWheather = new Date();
     }
-  
-    //console.log(valDate);
+
   
     let datenow = new Date();
   
     const diffTime = (dateWheather - datenow);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-    //console.log(datenow);
-    //console.log(dateWheather)
-    
   
     return diffDays;
   
   }
 
-export { checkForName, getCountDown }
+function getHistDate(CountDown)  {
+    const oneYearMs = 1000 * 60 * 60 * 24 * 365;
+    const counDownMs = 1000 * 60 * 60 * 24 * CountDown;
+    const onedayMs = 1000 * 60 * 60 * 24;
+
+    let dateNow  = new Date();
+    let dateHist = new Date(dateNow.getTime() + counDownMs);
+    if (CountDown > 0) { // need to substract 1 year if the departure date is in the future 
+
+        let nbofYear=Math.floor(counDownMs/365); // todo need to adjust the number of year to substract
+        dateHist = new Date (dateHist.getTime()-oneYearMs);
+    }
+
+    let datehistTomo = new Date (dateHist.getTime()+onedayMs);
+
+    let month = dateHist.getMonth()+1; // need to adjut months 0..11 so stupid
+    let monthTomo = datehistTomo.getMonth()+1;
+
+    let  dateHistFormat = dateHist.getFullYear() +'-'+month+'-'+ dateHist.getDate()
+    let  dateHistRTomoFormat = datehistTomo.getFullYear() +'-'+monthTomo+'-'+ datehistTomo.getDate()
+
+   return  '&start_date='+dateHistFormat+'&end_date='+dateHistRTomoFormat
+}
+
+export { checkForName, getCountDown, getHistDate }
