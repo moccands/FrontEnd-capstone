@@ -1,7 +1,8 @@
 //const baseURL = 'http://api.openweathermap.org/data/2.5/forecast?zip='
 const baseURL = 'http://api.geonames.org/postalCodeSearchJSON?placename='
 const apiUser = '&username=moccands';
-const whetheURL = 'https://api.weatherbit.io/v2.0/forecast/daily?city='
+const whetheURLforecast = 'https://api.weatherbit.io/v2.0/forecast/daily?city=';
+const whetheURLcurrent ='https://api.weatherbit.io/v2.0/current?city=';
 const apiKey = '&key=f5f2b485731f46d4a6f668271c1b33e4';
 const newZip = 10010;
 
@@ -48,13 +49,15 @@ function handleSubmit(event) {
 
     getGeo(baseURL,formText, apiUser).
       then(function(data){
-        getWeath(data,countDown)
-      }).
-      then(function(data){
-        postData('http://localhost:8081/analyseText', {data : formText }).then(function(res) {
-          document.getElementById('results').innerHTML = res.polarity
-       });
-      })
+        getWeath(data,countDown).
+          then(function(dataWeath){
+            postData('http://localhost:8081/analyseText', {data : formText }).then(function(res) {
+              console.log("here")
+              console.log(dataWeath)
+              document.getElementById('results').innerHTML = dataWeath.weather.description
+             });
+          });
+      });
 }
 
 
@@ -77,13 +80,29 @@ const getWeath = async (data, countDown)=>{
 
   let lat = data.lat;
   let lon = data.lng;
+  let url ;
+
+
+
+  if (countDown == 0) {
+    console.log("current");
+    url = whetheURLcurrent;
+  }
+  else if (countDown < 17){
+    console.log("forecast");
+
+    url = whetheURLforecast;
+  }
+  else {
+    console.log("historical");
+  }
   
-  const res = await fetch(whetheURL+'&lat='+lat+'&lon='+lon+apiKey);
+  const res = await fetch(url+'&lat='+lat+'&lon='+lon+apiKey);
   try {
     const data = await res.json();
-    console.log("res", data);
+    console.log("array data", data.data[countDown]);
 
-    return data;
+    return data.data[countDown];
   }  catch(error) {
     console.log("error", error);
     // appropriately handle the error
