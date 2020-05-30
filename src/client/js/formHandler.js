@@ -1,38 +1,9 @@
-//const baseURL = 'http://api.openweathermap.org/data/2.5/forecast?zip='
+
 const baseURL = 'http://api.geonames.org/postalCodeSearchJSON?placename='
 const apiUser = '&username=moccands';
 const whetheURLforecast = 'https://api.weatherbit.io/v2.0/forecast/daily?city=';
 const whetheURLcurrent ='https://api.weatherbit.io/v2.0/current?city=';
-const apiKey = '&key=f5f2b485731f46d4a6f668271c1b33e4';
-const newZip = 10010;
-
-
-
-function getCountDown()   {
-
-  let valDate = document.getElementById('date').value;
-
-  let dateWheather = new Date();
-
-  if (valDate) {
-    dateWheather = new Date(valDate);
-  } else {
-    dateWheather = new Date();
-  }
-
-  //console.log(valDate);
-
-  let datenow = new Date();
-
-  const diffTime = (dateWheather - datenow);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-  //console.log(datenow);
-  //console.log(dateWheather)
-  
-
-  return diffDays;
-
-}
+const apiKey = '&key=f5f2b485731f46d4a6f668271c1b33e4'; // TODO put in env file
 
 function handleSubmit(event) {
     event.preventDefault()
@@ -43,7 +14,7 @@ function handleSubmit(event) {
 
     console.log("::: Form Submitted :::")
 
-    let countDown = getCountDown()
+    let countDown = Client.getCountDown()
     console.log(countDown)
 
 
