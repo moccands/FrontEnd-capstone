@@ -1,10 +1,11 @@
 
-const baseURL = 'http://api.geonames.org/postalCodeSearchJSON?placename='
-const apiUser = '&username=moccands';
+
 const whetheURLforecast = 'https://api.weatherbit.io/v2.0/forecast/daily?city=';
 const whetheURLcurrent ='https://api.weatherbit.io/v2.0/current?city=';
 const whetheURLhistory ='https://api.weatherbit.io/v2.0/history/daily?';
 const apiKey = '&key=f5f2b485731f46d4a6f668271c1b33e4'; // TODO put in env file
+
+import { checkForName, getCountDown, getHistDate } from './nameChecker'
 
 function udpateUI(dataWeath) {
     console.log("here")
@@ -27,29 +28,6 @@ function udpateUI(dataWeath) {
     document.getElementById('results').innerHTML =  descr
 }
 
-function handleSubmit(event) {
-    event.preventDefault()
-
-    // check what text was put into the form field
-    let formText = document.getElementById('name').value
-    Client.checkForName(formText)
-
-    console.log("::: Form Submitted :::")
-
-    let countDown = Client.getCountDown()
-    console.log(countDown)
-
-
-    getGeo(baseURL,formText, apiUser).
-      then(function(data){
-        getWeath(data,countDown).
-          then(function(dataWeath){
-            postData('http://localhost:8081/analyseText', {data : formText }).then(function(res) {
-              udpateUI(dataWeath)
-             });
-          });
-      });
-}
 
 
 
@@ -128,4 +106,4 @@ const postData = async ( url = '', data = {})=>{
   }
 }
 
-export { handleSubmit }
+export { getGeo, postData, getWeath, udpateUI }
