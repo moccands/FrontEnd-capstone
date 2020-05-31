@@ -2,58 +2,62 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
-        <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
+        <title>capstone travel app</title>
+        <meta name="description" content="frontend capstone for Udacity" />
         
     </head>
 
     <body>
-
+<div class="grid">
         <header>
-
-
-
-
-
-            <div class="box">
+        
                 <div class="picture1">&nbsp;</div>
-            </div>
-            <div class="">
-                travel app
-            </div>
+            
+            
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse aliquid laboriosam 
+                minima ex praesentium recusandae reprehenderit unde sit tempore atque aut commodi quae expedita corrupti, dignissimos architecto. Eius, maiores ad?</p>
+
+                <h2>travel app instructions:</h2>
+                    <ol>
+                        <li>Coffee</li>
+                        <li>Tea</li>
+                        <li>Milk</li>
+                    </ol> 
+        
+   
         </header>
 
         <main>
             <section>
+                
                 <form class="" onsubmit="return handleSubmit(event)">
                     <input id="name" type="text" name="input" value=""  placeholder="enter a location name, ex: Paris">
                     <input id="date" type="date" name="input" value=""  placeholder="Date">
                     <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
                 </form>
-            <section>
+            </section>
+            
+            <h2>Weather on the selected day:</h2>
 
             <section>
-                <div class="card">
-                <strong>Weather on the day of your arrival:</strong>
-                </section>
-           <div id="results"></div>
+                <div id="results"></div>
             </section>
+
+            <h2>City picture</h2>
+
             <section>
                 <div class="card">
                     <figure>
-                    <h2><i>Name of the city</i></h2>
                     <div class="picture2">&nbsp;</div>
                     </figure>
+                </div>
             </section>
-        </main>
+    </div>
+ </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p>This app was created by @ sara</p>
         </footer>
-
     </body>
 </html>

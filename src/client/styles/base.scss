@@ -2,13 +2,31 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    border:1px solid green;
 }
 
 main {
     flex: 2;
+    border:1px solid orange;
 }
 
 section {
-    max-width: 800px;
+    max-width: 900px;
     margin: 50px auto;
+    border:1px solid fuchsia;
+}
+
+.grid {
+    display: grid;
+    width: 100%;
+    margin: auto;
+    grid-template-columns: 100%;
+    grid-gap: 1rem;
+    /*grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1rem;*/
+  }
+
+  #result {
+    padding: 70px;
+    border: 1px solid #4CAF50;
 }

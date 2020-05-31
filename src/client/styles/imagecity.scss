@@ -2,29 +2,19 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 5px; /* 5px rounded corners */
+    border: 1px solid red;
   }
-  #content {
-    grid-area: bottomRight;
-    background-image: url('../img/logoudacity.jpg');
-    background-size: contain;
-    background-position-y: center;
-    background-repeat: no-repeat;
-  }
-  
-  #header {
-		grid-area: top;
-	}
 
   div.picture1 {
-    width:1200px; /*width of your image*/
-    height:100px; /*height of your image*/
+    width:500 px; /*width of your image*/
+    height:150px; /*height of your image*/
     background-image:url('../img/logoudacity.jpg');
     margin:0; /* If you want no margin */
     padding:0; /*if your want to padding */
  }
 
  div.picture2 {
-  width:1200px; /*width of your image*/
+  width:500px; /*width of your image*/
   height:100px; /*height of your image*/
   background-image:url('../img/holiday-default.jpg');
   margin:0; /* If you want no margin */
