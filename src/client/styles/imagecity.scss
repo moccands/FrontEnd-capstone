@@ -14,9 +14,22 @@
  }
 
  div.picture2 {
-  width:500px; /*width of your image*/
-  height:100px; /*height of your image*/
+  /*widows: 100px; /*width of your image*/
+ /* width: 100%;*/
+  max-width: 100%;
+  height:500px; /*height of your image*/
   background-image:url('../img/holiday-default.jpg');
   margin:0; /* If you want no margin */
   padding:0; /*if your want to padding */
 }
+@media screen and (max-width: 600px) {
+  div.picture2 {
+    /*widows: 100px; /*width of your image*/
+   /* width: 100%;*/
+    max-width: 100%;
+    height:300px; /*height of your image*/
+    background-image:url('../img/holiday-default.jpg');
+    margin:0; /* If you want no margin */
+    padding:0; /*if your want to padding */
+  }
+  }         

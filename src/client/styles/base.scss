@@ -21,6 +21,7 @@ section {
     width: 100%;
     margin: auto;
     grid-template-columns: 100%;
+    grid-template-rows: 100 px;
     grid-gap: 1rem;
     /*grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 1rem;*/
@@ -29,4 +30,9 @@ section {
   #result {
     padding: 70px;
     border: 1px solid #4CAF50;
+}
+
+
+.headerH2 {
+    font-weight: bold;
 }
