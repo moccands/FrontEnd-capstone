@@ -19,7 +19,7 @@ function udpateUI(dataWeath) {
       }
     }
     else {
-      descr = 'Precip: '+ dataWeath.precip +'[mm], T Min: '+ dataWeath.min_temp + '[°], T Max: '+ dataWeath.max_temp + '[°]';
+      descr = 'Typical Weather, Precip: '+ dataWeath.precip +'[mm], T Min: '+ dataWeath.min_temp + '[°], T Max: '+ dataWeath.max_temp + '[°]';
     }
 
     // TODO check temp instead max min for current

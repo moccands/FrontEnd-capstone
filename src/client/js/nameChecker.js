@@ -36,14 +36,12 @@ function getCountDown()   {
 
 function getHistDate(CountDown)  {
     const oneYearMs = 1000 * 60 * 60 * 24 * 365;
-    const counDownMs = 1000 * 60 * 60 * 24 * CountDown;
+    const counDownMs = (1000 * 60 * 60 * 24 * (CountDown % 365));
     const onedayMs = 1000 * 60 * 60 * 24;
 
     let dateNow  = new Date();
     let dateHist = new Date(dateNow.getTime() + counDownMs);
     if (CountDown > 0) { // need to substract 1 year if the departure date is in the future 
-
-        let nbofYear=Math.floor(counDownMs/365); // todo need to adjust the number of year to substract
         dateHist = new Date (dateHist.getTime()-oneYearMs);
     }
 

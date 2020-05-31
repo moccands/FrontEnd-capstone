@@ -19,8 +19,3 @@ export {
     getCountDown,
     getHistDate
 }
-
-console.log(checkForName);
-
-alert("Je vois le but du tunnel")
-console.log("CHANGE!!");
