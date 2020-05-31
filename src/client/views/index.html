@@ -28,7 +28,8 @@
                 
                 <form  class="">
                     <input id="name" type="text" name="input" value=""  placeholder="enter a location name, ex: Paris">
-                    <input id="date" type="date" name="input" value=""  placeholder="Date">
+                    <input id="date" onfocus="(this.type='date')" name="input" value=""  placeholder="Departure Date">
+                    <input id="finaldate" onfocus="(this.type='date')" name="input" value=""  placeholder="End Date">
                     <input id="submitform"  type="submit" name="" value="submit">
                 </form>
             </section>
@@ -39,6 +40,14 @@
 
             <section>
                 <div id="results"></div>
+            </section>
+
+            <section>
+            <h2>length of trip</h2>
+            </section>
+
+            <section>
+                <div id="lengthoftrip"></div>
             </section>
 
             <section>
