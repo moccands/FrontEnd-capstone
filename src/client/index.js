@@ -36,8 +36,9 @@ const handleSubmit = async (e) => {
       then(function(data){
         getWeath(data,countDown).
           then(function(dataWeath){
-            postData('http://localhost:8081/analyseText', {data : formText }).then(function(res) {
-              udpateUI(dataWeath)
+            postData('http://localhost:8081/getImage', {data : formText }).then(function(res) {
+              console.log(res)
+              udpateUI(dataWeath,res.text)
              });
           });
       });

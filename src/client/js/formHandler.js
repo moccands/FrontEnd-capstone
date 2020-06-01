@@ -1,5 +1,3 @@
-
-
 const whetheURLforecast = 'https://api.weatherbit.io/v2.0/forecast/daily?city=';
 const whetheURLcurrent ='https://api.weatherbit.io/v2.0/current?city=';
 const whetheURLhistory ='https://api.weatherbit.io/v2.0/history/daily?';
@@ -7,7 +5,7 @@ const apiKey = '&key=f5f2b485731f46d4a6f668271c1b33e4'; // TODO put in env file
 
 import { checkForName, getCountDown, getHistDate } from './nameChecker'
 
-function udpateUI(dataWeath) {
+function udpateUI(dataWeath, cityImg) {
     console.log("here")
     console.log(dataWeath);
     let descr = '';
@@ -23,9 +21,16 @@ function udpateUI(dataWeath) {
       descr = 'Typical Weather, Precip: '+ dataWeath.precip +'[mm], T Min: '+ dataWeath.min_temp + '[°], T Max: '+ dataWeath.max_temp + '[°]';
     }
 
+    
+    document.getElementById('results').innerHTML =  descr
+
+    if (cityImg) {
+      const urlimg =  `url(${cityImg}) `
+      document.getElementById("cityimg").style.backgroundImage=urlimg;
+    }
+
     // TODO check temp instead max min for current
 
-    document.getElementById('results').innerHTML =  descr
 }
 
 
