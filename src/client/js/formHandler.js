@@ -8,7 +8,7 @@ import { checkForName, getCountDown, getHistDate } from './nameChecker'
 function udpateUI(dataWeath, cityImg) {
     console.log("here")
     console.log(dataWeath);
-    let urlimg =  `url(../img/holiday-default.jpg) `
+    let urlimg =  "./src/client/img/1ceae4fdf01004f4db97d32ece2d66d5.jpg"
 
     let descr = '';
     if (dataWeath.weather) {
@@ -28,10 +28,10 @@ function udpateUI(dataWeath, cityImg) {
 
     if (cityImg) {
       if (!cityImg.includes("error")) {
-        urlimg = `url(${cityImg}) `
+        urlimg = cityImg
       }
     }
-    document.getElementById("cityimg").style.backgroundImage=urlimg;
+    document.getElementById("cityimg").src = urlimg;
 
     // TODO check temp instead max min for current
 
