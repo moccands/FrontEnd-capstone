@@ -6,9 +6,12 @@
  }
 
   div.picture1 {
-    width:500 px; /*width of your image*/
-    height:150px; /*height of your image*/
-    background-image:url('../img/logoudacity.jpg');
+    //width:500 px; /*width of your image*/
+   // height:150px; /*height of your image*/
+    width: 100%;
+    height: auto;
+    background-repeat: no-repeat;
+    background-image:url('../img/logoudacity2.jpg');
     margin:0; /* If you want no margin */
     padding:0; /*if your want to padding */
  }
