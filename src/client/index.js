@@ -26,13 +26,9 @@ const handleSubmit = async (e) => {
 
     console.log("::: Form Submitted :::")
 
-    let countDown = getCountDown()
-    console.log(countDown)
-
-
     getGeo(baseURL,formText, apiUser).
       then(function(data){
-        getWeath(data,countDown).
+        getWeath(data).
           then(function(dataWeath){
             postData('http://localhost:8081/getImage', {data : formText }).then(function(res) {
               console.log(res)

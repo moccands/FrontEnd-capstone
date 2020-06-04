@@ -53,11 +53,12 @@ const getGeo = async (baseURL, city, key)=>{
   }
 }
 
-const getWeath = async (data, countDown)=>{
+const getWeath = async (data)=>{
 
   let lat = data.lat;
   let lon = data.lng;
   let url ;
+  const countDown = getCountDown();
   let arrayIndice = countDown;
 
 
