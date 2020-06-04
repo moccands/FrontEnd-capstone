@@ -3,8 +3,6 @@ import { getCountDown } from './js/nameChecker'
 import { getHistDate } from './js/nameChecker'
 import { getGeo, postData, getWeath, udpateUI } from './js/formHandler'
 
-import img from './img/logoudacity.jpg';
-
 import './styles/resets.scss'
 import './styles/header.scss'
 import './styles/form.scss'
