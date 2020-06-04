@@ -3,7 +3,7 @@ const whetheURLcurrent ='https://api.weatherbit.io/v2.0/current?city=';
 const whetheURLhistory ='https://api.weatherbit.io/v2.0/history/daily?';
 const apiKey = '&key=f5f2b485731f46d4a6f668271c1b33e4'; // TODO put in env file
 
-import { checkForName, getCountDown, getHistDate } from './nameChecker'
+import { getTripLength, getCountDown, getHistDate } from './nameChecker'
 
 function udpateUI(dataWeath, cityImg) {
     console.log("here")
@@ -33,8 +33,7 @@ function udpateUI(dataWeath, cityImg) {
     }
     document.getElementById("cityimg").src = urlimg;
 
-    // TODO check temp instead max min for current
-
+    document.getElementById("lengthoftrip").innerHTML = getTripLength();
 }
 
 
