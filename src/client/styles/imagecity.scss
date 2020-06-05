@@ -1,35 +1,13 @@
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    border-radius: 5px; /* 5px rounded corners */
-    //border: 1px solid red;
- }
 
-  div.picture1 {
-    //width:500 px; /*width of your image*/
-   // height:150px; /*height of your image*/
+.picture1 {
     width: 100%;
-    height: auto;
-    background-repeat: no-repeat;
-    background-image:url('../img/logoudacity2.jpg');
     margin:0; /* If you want no margin */
     padding:0; /*if your want to padding */
  }
 
- div.picture2 {
+ .picture2 {
   width: 100%;
   margin:0; /* If you want no margin */
   padding:0; /*if your want to padding */
 }
 
-@media screen and (max-width: 300px) {
-  div.picture2 {
-    /*widows: 100px; /*width of your image*/
-   /* width: 100%;*/
-    max-width: 100%;
-    height:300px; /*height of your image*/
-    background-image:url('../img/holiday-default.jpg');
-    margin:0; /* If you want no margin */
-    padding:0; /*if your want to padding */
-  }
-  }         

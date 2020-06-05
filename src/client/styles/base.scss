@@ -22,9 +22,8 @@ section {
     grid-template-columns: 100%;
     grid-template-rows: 60px 60px 60px;
     grid-row-gap: 20px;
-    /*grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 1rem;*/
   }
+  
 .gridheader {
     display: grid;
     width: 100%;
@@ -32,7 +31,8 @@ section {
     grid-template-columns: 100%;
     grid-row-gap: 20px;
 }
-  #result {
+
+#result {
     padding: 70px;
     border: 1px solid #4CAF50;
 }
