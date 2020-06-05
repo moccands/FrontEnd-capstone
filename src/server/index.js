@@ -7,11 +7,6 @@ const cors = require("cors");
 const axios = require("axios");
 
 dotenv.config();
-//var aylien = require('aylien_textapi');
-/*var textapi = new aylien({
-    application_id: process.env.API_ID,
-    application_key: process.env.API_KEY
-    });*/
 
 const app = express()
 
@@ -28,9 +23,7 @@ app.get('/', function (req, res) {
 
 // designates what port the app will listen to for incoming requests
 app.listen(8081, function () {
-    console.log('Example app listening on port 8081!')
-    console.log(`Your API key is ${process.env.API_KEY}`);
-
+    console.log('app listening on port 8081!')
 })
 
 
@@ -40,18 +33,24 @@ app.get('/test', function (req, res) {
 
 app.post('/getImage',getImage);
 
+function getwebFormatURL(response){
+  let txt 
+  if(response.data.hits[0]) {
+    console.log("res", response.data.hits[0].webformatURL);
+    txt = response.data.hits[0].webformatURL;
+  } else {
+    txt = "error nothing found";
+  }
+  return txt
+}
+
 async function getImage(req, res) {
     const  cityname  = req.body.data;
 
     const pixabayApiUrl = `https://pixabay.com/api/?key=${process.env.API_KEY}&q=${cityname}&image_type=photo&orientation=horizontal&category=travel`;
     try {
       const response = await axios.get(pixabayApiUrl)
-      if(response) {
-        console.log("res", response.data.hits[0].webformatURL);
-        res.send({text: response.data.hits[0].webformatURL});
-      }else {
-        res.send({text:"error nothing found"});
-      }
+      res.send({text:getwebFormatURL(response)});
     }  
     catch(error) {
       console.log("error", error);

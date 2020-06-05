@@ -21,16 +21,16 @@ function getTripLength()  {
 
 
 
-function getCountDown()   {
+function getCountDown( today)   {
 
     let valDate = document.getElementById('date').value;
-    let dateWheather = new Date();
+    let dateWheather = today
   
     if (valDate) {
       dateWheather = new Date(valDate);
     }
   
-    let datenow = new Date();
+    let datenow = today
   
     const diffTime = (dateWheather - datenow);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
