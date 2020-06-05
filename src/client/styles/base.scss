@@ -2,12 +2,10 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    border:1px solid green;
 }
 
 main {
     flex: 2;
-    border:1px solid orange;
 }
 
 section {
@@ -20,10 +18,8 @@ section {
     width: 100%;
     margin: auto;
     grid-template-columns: 100%;
-    grid-template-rows: 60px 60px 60px;
-    grid-row-gap: 20px;
   }
-  
+
 .gridheader {
     display: grid;
     width: 100%;
