@@ -33,6 +33,9 @@ module.exports = {
         libraryTarget: 'var',
         library: 'Client'
     },
+    node: {
+        fs: "empty"
+     },
     /*mode: 'development',*/
     mode: 'production',
    /* devtool: 'source-map',
