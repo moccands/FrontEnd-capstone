@@ -11,7 +11,12 @@ input {
     margin: 10px 0;
 }
 
-#submitform { 
-    background-color: blueviolet;
+#submitform {
+    background-color: white;
     width: 20%;
-}
+  }
+
+#submitform:hover {
+    background-color: purple;
+    width: 20%;
+  }
