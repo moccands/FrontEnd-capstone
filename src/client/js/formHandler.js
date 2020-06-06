@@ -11,21 +11,31 @@ function udpateUI(dataWeath, cityImg) {
     console.log(dataWeath);
     let urlimg =  urlholiday;
     let descr = '';
+    let temp1 = '';
+    let temp2 = '';
 
     if(!dataWeath) {
       descr = "could not get any forecast";
     } else if (dataWeath.weather) {
       if (dataWeath.min_temp) {
-        descr = dataWeath.weather.description+', ' + ' T Min: '+ dataWeath.min_temp + ' [°], T Max: '+ dataWeath.max_temp + ' [°]';
+        descr = dataWeath.weather.description;
+        temp1 = ' T Min: '+ dataWeath.min_temp +' [°]';
+        temp2 =  'T Max: '+ dataWeath.max_temp + ' [°]';
       }
       else {
-        descr = dataWeath.weather.description+', ' + ' T: '+ dataWeath.temp + ' [°]';
+        descr = dataWeath.weather.description;
+        temp1 = ' T actual: '+ dataWeath.temp + ' [°]';
       }
     }
     else {
-      descr = 'Typical Weather, Precip: '+ dataWeath.precip +' [mm], T Min: '+ dataWeath.min_temp + ' [°], T Max: '+ dataWeath.max_temp + ' [°]';
+      descr = 'Typical Weather:  Precip: '+ dataWeath.precip +' [mm]';  
+      temp1 = 'T Min: '+ dataWeath.min_temp + ' [°]';  
+      temp2 = 'T Max: '+ dataWeath.max_temp + ' [°]';
     }
-    document.getElementById('results').innerHTML =  descr
+    document.getElementById('resultW').innerHTML =  descr;
+    document.getElementById('resultT1').innerHTML =  temp1;
+    document.getElementById('resultT2').innerHTML =  temp2;
+
 
     if (cityImg) {
       if (!cityImg.includes("error")) {
